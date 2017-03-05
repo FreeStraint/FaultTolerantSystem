@@ -1,0 +1,2 @@
+#run jni
+gcc -dynamiclib -I /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/include/ InsertionSort.c -o libinsertionsort.jnilib

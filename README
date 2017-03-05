@@ -1,0 +1,13 @@
+ECE421 Project1
+
+Fault Tolerant Systems
+
+To run program, import the program into Eclipse
+
+javac InsertionSort.java
+javah InsertionSort
+gcc -dynamiclib -I /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/include/ InsertionSort.c -o libinsertionsort.jnilib
+
+java DataGenerator <outputfile.txt> [Any integer]
+java DataSorter <inputFile.txt> <outputFile.txt> [primary variant failure probabilities] [secondary variant failure probabilities] [timeout]
+

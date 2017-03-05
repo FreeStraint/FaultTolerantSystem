@@ -9,6 +9,7 @@ public class Watchdog extends TimerTask  {
 	Thread watched;
 	
 	public Watchdog(Thread target){
+
 		watched = target;
 	}
 	@SuppressWarnings("deprecation")

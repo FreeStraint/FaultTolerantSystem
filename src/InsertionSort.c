@@ -40,6 +40,7 @@ JNIEXPORT jintArray JNICALL Java_InsertionSort_insertsort
 
     jintArray returnArray = (*env)->NewIntArray(env, len+1);
     (*env)->SetIntArrayRegion(env, returnArray,0,len+1,rArray);
+
     memAccess += len;
 
   return returnArray;

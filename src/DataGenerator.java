@@ -2,7 +2,9 @@ import java.util.Random;
 
 public class DataGenerator {
 
+
 	public static void main(String[] args) throws Exception {
+
 		if(args.length == 2){
 			String filename = args[0];
 			int size = Integer.parseInt(args[1]);
@@ -15,6 +17,7 @@ public class DataGenerator {
 		if(args.length != 2){
 			String errorMsg = "Invalid syntax, please enter a filename and then a integer";
 			throw new Exception(errorMsg);
+
 		}
 	}
 	

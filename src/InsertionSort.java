@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+>>>>>>> 3d2859d46741c399224a24346c17ff8771bbdc2b
 
 /**
  * This insertion sort will be written in c code
@@ -17,6 +21,7 @@ public class InsertionSort extends Sorter {
 		System.loadLibrary("insertionsort");
 		int[] result = insertsort(args);
 		
+
 		//Last element is memAccess
 		memAccess = result[result.length-1];
 		//convert int[] result to int[] args
@@ -24,6 +29,7 @@ public class InsertionSort extends Sorter {
 			args[i] = result[i];
 			memAccess += 2;
 		}
+
 	}
 	
 	
@@ -36,10 +42,15 @@ public class InsertionSort extends Sorter {
 	public void setArgs(int[] a){
 		args = a;
 		size = args.length;
+
 	}
 
 	@Override
 	public int getMemAccess() {
+<<<<<<< HEAD
+=======
+		// TODO Auto-generated method stub
+>>>>>>> 3d2859d46741c399224a24346c17ff8771bbdc2b
 		return memAccess;
 	}
 

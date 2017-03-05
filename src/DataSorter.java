@@ -18,6 +18,7 @@ public class DataSorter {
 					+ "failure probabilies for secondary invariants "
 					+ "time limit";
 			throw new Exception(error);
+
 		}
 		
 		//Main code
@@ -65,6 +66,7 @@ public class DataSorter {
 			
 		}
 		
+
 		System.out.println("No more back up soring, No files will be created.");
 		throw new Exception("Failure Exception, no sorting had been done");
 		
@@ -72,11 +74,12 @@ public class DataSorter {
 	
 	public static void sort(Sorting s, int[] original, int timeout){
 		//Reference from watchdog driver method from eclass
+
 		s.setValues(original);
 
 		Timer t = new Timer();
 		Watchdog w = new Watchdog(s);
-		
+
 		t.schedule(w, timeout);
 		s.start();
 		try{
