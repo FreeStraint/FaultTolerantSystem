@@ -14,9 +14,7 @@ public class ReadWriteFile {
 			writer = new PrintWriter(filename, "UTF-8");
 			for(int i:size){
 				writer.write(String.valueOf(i) + ' ');
-			}
-			System.out.println("This is working");
-			
+			}			
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			System.out.println("Error, unable to write to file");
 		}

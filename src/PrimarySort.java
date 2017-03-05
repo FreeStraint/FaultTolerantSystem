@@ -27,7 +27,6 @@ public class PrimarySort extends Sorting {
 	public boolean isFailure(double prob){
 		
 		int memAccess = h.getMemAccess();
-		System.out.println(memAccess);
 		double hazard = memAccess * prob;
 		double rand = new Random().nextDouble();
 		

@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class InsertionSort extends Sorter {
 	private int size;
 	private int[] args;
-	
+	private int memAccess;
 	static{
 		System.setProperty("java.library.path", ".");
 		System.loadLibrary("insertionsort");
@@ -18,9 +18,8 @@ public class InsertionSort extends Sorter {
 		System.loadLibrary("insertionsort");
 		int[] result = insertsort(args);
 		
-		System.out.println(Arrays.toString(result));
-		//String s = insertsort();
-		//System.out.println("s: "+s);
+		memAccess = result[result.length];
+		args = Arrays.copyOfRange(result, 0, result.length-1);
 	}
 	
 	
@@ -37,7 +36,7 @@ public class InsertionSort extends Sorter {
 	@Override
 	public int getMemAccess() {
 		// TODO Auto-generated method stub
-		return 0;
+		return memAccess;
 	}
 
 
