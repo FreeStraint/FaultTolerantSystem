@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import java.util.Arrays;
->>>>>>> 3d2859d46741c399224a24346c17ff8771bbdc2b
 
 /**
  * This insertion sort will be written in c code
@@ -47,10 +43,6 @@ public class InsertionSort extends Sorter {
 
 	@Override
 	public int getMemAccess() {
-<<<<<<< HEAD
-=======
-		// TODO Auto-generated method stub
->>>>>>> 3d2859d46741c399224a24346c17ff8771bbdc2b
 		return memAccess;
 	}
 
