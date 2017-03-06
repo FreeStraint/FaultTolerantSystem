@@ -2,13 +2,10 @@ import java.util.Timer;
 
 public class DataSorter {
 	
-	static PrimarySort psort;
+	static String[] primarySort = {"Heapsort"};
 	static String[] backupSort = {"InsertionSort"};
-	//static String[] backupSort = {};
-
 	
 	public static void main(String[] args) throws Exception  {
-		
 		
 		if(args.length != 5){
 			String error = "Invalid syntax "
@@ -23,6 +20,7 @@ public class DataSorter {
 		
 		//Main code
 		int[] original;
+		Sorting sort = null;
 
 		String inputFileName = args[0];
 		String outputFileName = args[1];
@@ -34,39 +32,36 @@ public class DataSorter {
 		original = ReadWriteFile.readFromFile(inputFileName);
 
 		//Run on primary invariant
-		psort = new PrimarySort();
-		sort(psort, original, timeout);
-		
-		//If acceptance test passed
-		if(psort.isComplete() && !psort.isFailure(primaryProb)){
-			if(SortCheck.check(original, psort.getValues())){
-				ReadWriteFile.writeToFile(outputFileName, psort.getValues());
+		for(String s: primarySort){
+			sort = new Sorting(s);
+			sort(sort, original, timeout);
+			
+			//If acceptance test passed
+			if(sort.isComplete() && !sort.isFailure(primaryProb) && sort.check()){
+				ReadWriteFile.writeToFile(outputFileName, sort.getValues());
 				System.out.println("Primary sort success:Return result");
 				System.exit(0);
 			}
 		}
 		System.out.println("Primary sort failed, running backup sort now");
 		
-		//Checkpoint, restore the original list
-		original = ReadWriteFile.readFromFile(inputFileName);
-
 		//Primary sorting failed, run backup test now
 		for(String s:backupSort){
+			//Checkpoint, restore the original list
+			original = ReadWriteFile.readFromFile(inputFileName);
+
 			System.out.println("Running backup sort: "+ s);
-			BackupSort bs = new BackupSort(s);
-						
-			sort(bs, original, timeout);
-			if(bs.isComplete() && !bs.isFailure(secondaryProb)){
-				if(SortCheck.check(original, bs.getValues())){
-					ReadWriteFile.writeToFile(outputFileName, bs.getValues());
-					System.out.println("backup sort: "+ s +", Return result");
-					System.exit(0);
-				}
+			sort = new Sorting(s);
+		
+			sort(sort, original, timeout);
+			if(sort.isComplete() && !sort.isFailure(secondaryProb) && sort.check()){
+				ReadWriteFile.writeToFile(outputFileName, sort.getValues());
+				System.out.println("backup sort: "+ s +", Return result");
+				System.exit(0);
 			}
 			
 		}
 		
-
 		System.out.println("No more back up soring, No files will be created.");
 		throw new Exception("Failure Exception, no sorting had been done");
 		
