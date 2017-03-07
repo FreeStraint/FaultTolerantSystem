@@ -15,3 +15,5 @@ libinsertionsort.jnilib: InsertionSort.c InsertionSort.java
 clean:
 	rm *.class
 	rm *.txt
+	rm *.h
+	rm *.so
