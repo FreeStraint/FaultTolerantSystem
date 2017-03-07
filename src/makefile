@@ -1,17 +1,8 @@
-all: libinsertionsort.so DataGenerator.class DataSorter.class
-
-DataGenerator.class:DataGenerator.java ReadWriteFile.java
-	javac DataGenerator.java ReadWriteFile.java
-
-DataSorter.class: DataSorter.java Sorter.java Heapsort.java InsertionSort.java ReadWriteFile.java Watchdog.java Sorting.java
-	javac DataSorter.java Sorter.java Heapsort.java InsertionSort.java ReadWriteFile.java Watchdog.java Sorting.java
-
-libinsertionsort.so: InsertionSort.c InsertionSort.java
-	javac InsertionSort.java
+make:
+	javac *.java
 	javah InsertionSort
-	gcc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -shared -fpic -o libinsertionsort.so InsertionSort.c
+	gcc -I$JAVA_HOME/include -I$JAVA_HOME/include/linux -shared -fpic -o libinsertionsort.so lib_insertionsort.c
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
-
 clean:
 	rm *.class
 	rm *.h
