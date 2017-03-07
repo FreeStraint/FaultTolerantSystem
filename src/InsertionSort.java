@@ -8,16 +8,12 @@ public class InsertionSort extends Sorter {
 	private int size;
 	private int[] args;
 	private int memAccess;
-	static{
-		System.setProperty("java.library.path", ".");
-		System.loadLibrary("insertionsort");
-	}
+	
 	//Driver
 	public void sort(){
 		System.loadLibrary("insertionsort");
 		int[] result = insertsort(args);
 		
-
 		//Last element is memAccess
 		memAccess = result[result.length-1];
 		//convert int[] result to int[] args
@@ -45,6 +41,4 @@ public class InsertionSort extends Sorter {
 	public int getMemAccess() {
 		return memAccess;
 	}
-
-
 }
