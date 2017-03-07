@@ -2,7 +2,7 @@ import java.util.Timer;
 
 public class DataSorter {
 	
-	static String[] primarySort = "Heapsort";
+	static String primarySort = "Heapsort";
 	static String[] backupSort = {"InsertionSort"};
 	
 	public static void main(String[] args) throws Exception  {
