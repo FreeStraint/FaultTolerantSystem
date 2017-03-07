@@ -1,4 +1,4 @@
-all: DataGenerator.class DataSorter.class
+all: libinsertionsort.so DataGenerator.class DataSorter.class
 
 DataGenerator.class:DataGenerator.java ReadWriteFile.java
 	javac DataGenerator.java ReadWriteFile.java
@@ -6,7 +6,7 @@ DataGenerator.class:DataGenerator.java ReadWriteFile.java
 DataSorter.class: DataSorter.java Sorter.java Heapsort.java InsertionSort.java ReadWriteFile.java Watchdog.java Sorting.java
 	javac DataSorter.java Sorter.java Heapsort.java InsertionSort.java ReadWriteFile.java Watchdog.java Sorting.java
 
-libinsertionsort.jnilib: InsertionSort.c InsertionSort.java
+libinsertionsort.so: InsertionSort.c InsertionSort.java
 	javac InsertionSort.java
 	javah InsertionSort
 	gcc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -shared -fpic -o libinsertionsort.so InsertionSort.c
@@ -14,6 +14,6 @@ libinsertionsort.jnilib: InsertionSort.c InsertionSort.java
 
 clean:
 	rm *.class
-	rm *.txt
 	rm *.h
 	rm *.so
+	rm *.txt
