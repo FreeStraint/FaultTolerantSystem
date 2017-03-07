@@ -3,7 +3,10 @@ ECE421 Project1
 Fault Tolerant Systems
 
 To run program
-make all
+javac *.java
+javah InsertionSort
+gcc -I$JAVA_HOME/include -I$JAVA_HOME/include/linux -shared -fpic -o libinsertionsort.so lib_insertionsort.c
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 
 java DataGenerator <outputfile.txt> [Any integer]
 java DataSorter <inputFile.txt> <outputFile.txt> [primary variant failure probabilities] [secondary variant failure probabilities] [timeout]
